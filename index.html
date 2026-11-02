@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Père Noël surprise</title>
+  <meta name="description" content="Tirage au sort de Père Noël surprise : chacun pioche un prénom, personne ne sait qui a pioché qui.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Père Noël surprise</h1>
+    <p>Chacun pioche un prénom, personne ne sait qui a pioché qui.</p>
+  </header>
+
+  <main>
+    <noscript><p class="notice">Cette page a besoin de JavaScript pour fonctionner.</p></noscript>
+
+    <!-- Écran organisateur -->
+    <section id="organizer">
+      <form id="draw-form" novalidate>
+        <label for="participants">Participants</label>
+        <p class="help">Un prénom par ligne, 3 au minimum.</p>
+        <textarea id="participants" rows="8" placeholder="Marie&#10;Paul&#10;Sofia&#10;Karim"></textarea>
+
+        <label for="exclusions">Exclusions (facultatif)</label>
+        <p class="help">Un duo par ligne, par exemple pour un couple : Marie - Paul.</p>
+        <textarea id="exclusions" rows="3" placeholder="Marie - Paul"></textarea>
+
+        <p id="error" class="error" role="alert"></p>
+        <button type="submit" class="primary">Lancer le tirage</button>
+      </form>
+    </section>
+
+    <!-- Liens à envoyer -->
+    <section id="links" hidden>
+      <h2>Les liens sont prêts</h2>
+      <p>Envoie à chaque personne son lien personnel. Le résultat n'apparaît qu'après sa confirmation, ne les ouvre pas à sa place.</p>
+      <ul id="links-list" class="links-list"></ul>
+      <button type="button" id="restart" class="secondary">Faire un nouveau tirage</button>
+    </section>
+
+    <!-- Écran de révélation -->
+    <section id="reveal" hidden>
+      <div id="confirm">
+        <h2>Es-tu bien <span id="confirm-name"></span> ?</h2>
+        <p>Ce lien est réservé à cette personne. Le résultat s'affiche une fois que tu as confirmé.</p>
+        <div class="actions">
+          <button type="button" id="yes" class="primary">Oui, révéler mon tirage</button>
+          <button type="button" id="no" class="secondary">Ce n'est pas moi</button>
+        </div>
+      </div>
+
+      <div id="wrong" hidden>
+        <h2>Ce lien n'est pas pour toi</h2>
+        <p>Ferme cette page. Demande ton propre lien à l'organisateur.</p>
+      </div>
+
+      <div id="result" class="gift" hidden>
+        <p>Tu offres un cadeau à</p>
+        <p id="gift-name" class="gift-name"></p>
+        <p class="help">Garde le secret jusqu'à l'échange.</p>
+      </div>
+
+      <p id="reveal-error" class="error" role="alert"></p>
+    </section>
+  </main>
+
+  <script src="js/draw.js"></script>
+  <script src="js/secret.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
